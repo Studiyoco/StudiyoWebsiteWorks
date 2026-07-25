@@ -62,9 +62,42 @@
     line-height:1.05;margin-bottom:22px;max-width:16ch;
   }
   .hero p{font-size:17.5px;color:var(--ink-dim);max-width:56ch}
-  .hero-stats{display:flex;gap:36px;margin-top:38px;flex-wrap:wrap}
-  .hero-stats div b{display:block;font-size:26px;font-weight:600;letter-spacing:-.02em}
-  .hero-stats div span{font-size:13px;color:var(--ink-faint);letter-spacing:.01em}
+  .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  .hero-stat{
+    display:flex;align-items:center;gap:8px;margin-top:22px;
+    font-size:13.5px;color:var(--ink-faint);letter-spacing:.005em;
+  }
+  .hero-stat svg{color:var(--accent);flex-shrink:0}
+  .hero-stat b{color:var(--ink);font-weight:600}
+
+  .btn-primary,.btn-secondary{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 22px;border-radius:100px;font-size:15px;font-weight:500;
+    text-decoration:none;letter-spacing:-.005em;transition:all .15s;
+  }
+  .btn-primary{background:var(--ink);color:#fff;border:1px solid var(--ink)}
+  .btn-primary:hover{background:var(--accent);border-color:var(--accent)}
+  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn-secondary:hover{border-color:rgba(17,17,17,.35)}
+  .btn-secondary svg{color:var(--accent)}
+
+  /* ---------- client logo marquee ---------- */
+  .logo-marquee{
+    padding:34px 0;overflow:hidden;position:relative;
+    width:100vw;margin-left:calc(50% - 50vw);margin-top:56px;
+  }
+  .logo-marquee .fade{position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
+  .logo-marquee .fade.l{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+  .logo-marquee .fade.r{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+  .logo-track{display:flex;align-items:center;gap:72px;width:max-content;animation:logoscroll 34s linear infinite}
+  .logo-marquee:hover .logo-track{animation-play-state:paused}
+  .logo-track img{
+    height:32px;width:auto;display:block;flex-shrink:0;
+    filter:grayscale(100%) contrast(1.15);opacity:.8;transition:filter .2s,opacity .2s;
+  }
+  .logo-track img:hover{filter:grayscale(0%) contrast(1);opacity:1}
+  @keyframes logoscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion: reduce){.logo-track{animation:none}}
 
   /* ---------- filters ---------- */
   .filters{
@@ -86,53 +119,46 @@
 
   /* ---------- masonry grid ---------- */
   .grid-wrap{padding:44px 0 20px}
-  .masonry{column-count:3;column-gap:18px}
-  @media(max-width:980px){.masonry{column-count:2}}
-  @media(max-width:600px){.masonry{column-count:1}}
+  .masonry{position:relative}
 
   .card{
-    break-inside:avoid;margin-bottom:18px;display:block;
-    opacity:0;transform:translateY(10px);
-    animation:cardin .5s cubic-bezier(.2,.7,.2,1) forwards;
+    position:absolute;top:0;left:0;display:block;opacity:0;
   }
-  @keyframes cardin{to{opacity:1;transform:none}}
+  .card.in{
+    transition:left .35s cubic-bezier(.2,.7,.2,1), top .35s cubic-bezier(.2,.7,.2,1), opacity .4s ease;
+    opacity:1;
+  }
   .card.hide{display:none}
   .media{
     position:relative;border-radius:16px;overflow:hidden;
     border:1px solid var(--line-soft);background:var(--panel);
   }
-  .media video,.media img{width:100%;display:block}
+  .media video,.media img{width:100%;height:100%;display:block;object-fit:cover}
   .tag-pill{
     position:absolute;top:10px;left:10px;font-size:11px;font-weight:500;
     background:rgba(22,21,20,.55);color:#fff;padding:5px 10px;border-radius:100px;
     letter-spacing:.03em;backdrop-filter:blur(4px);
   }
-  .card .cap{padding:10px 2px 0;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-  .card .cap .t{font-size:14px;color:var(--ink);font-weight:500;letter-spacing:-.005em}
+  .star-pill{
+    position:absolute;top:10px;right:10px;font-size:11px;font-weight:600;
+    background:var(--accent);color:#fff;padding:5px 10px;border-radius:100px;
+    letter-spacing:.02em;
+  }
+  .card .cap{
+    padding:10px 2px 0;display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+    height:34px;box-sizing:border-box;
+  }
+  .card .cap .t{
+    font-size:14px;color:var(--ink);font-weight:500;letter-spacing:-.005em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
   .card .cap .k{font-size:12px;color:var(--ink-faint);flex-shrink:0}
+
 
   .empty{display:none;text-align:center;padding:60px 0;color:var(--ink-faint)}
 
-  /* ---------- CTA ---------- */
-  .cta{
-    border-top:1px solid var(--line-soft);padding:70px 0;text-align:center;
-  }
-  .cta h2{font-size:clamp(26px,4vw,36px);font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
-  .cta p{color:var(--ink-dim);max-width:48ch;margin:0 auto 30px}
-  .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    background:var(--accent);color:#fff;border:none;border-radius:12px;
-    font-family:inherit;font-size:15.5px;font-weight:600;letter-spacing:-.01em;
-    padding:15px 28px;cursor:pointer;transition:all .15s;text-decoration:none;
-  }
-  .btn:hover{transform:translateY(-1px);box-shadow:0 14px 34px -12px rgba(255,102,51,.55)}
-  .btn.ghost{
-    background:#fff;color:var(--ink);border:1px solid var(--line);
-  }
-  .btn.ghost:hover{border-color:rgba(17,17,17,.35);box-shadow:none;transform:none}
-
   footer{
+    margin-top:20px;
     border-top:1px solid var(--line-soft);padding:30px 0 50px;
     font-size:13px;color:var(--ink-faint);
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
@@ -166,10 +192,27 @@
     <div class="kicker reveal"><span class="dot"></span>Selected work</div>
     <h1 class="reveal" style="animation-delay:.08s">Case studies.</h1>
     <p class="reveal" style="animation-delay:.16s">A look at the character systems, motion, and 3D craft we've designed, rigged, and animated for apps and brands. Every piece below was made in-house.</p>
-    <div class="hero-stats reveal" style="animation-delay:.24s">
-      <div style="display:none"><b id="stat3d">0</b><span>3D &amp; motion pieces</span></div>
+    <div class="hero-actions reveal" style="animation-delay:.24s">
+      <a class="btn-primary" href="https://x.com/Studiyoco" target="_blank" rel="noopener">
+        Let's talk
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn-secondary" href="https://cal.com/studiyo/chat?overlayCalendar=true" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Book a call
+      </a>
+    </div>
+    <div class="hero-stat reveal" style="animation-delay:.3s">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+      <span><b>1M+</b> impressions across our works</span>
     </div>
   </div>
+</div>
+
+<div class="logo-marquee reveal" style="animation-delay:.3s">
+  <div class="fade l"></div>
+  <div class="fade r"></div>
+  <div class="logo-track" id="logoTrack"></div>
 </div>
 
 <div class="filters" id="work">
@@ -179,7 +222,7 @@
       <button type="button" class="chip" data-filter="mascot">Mascot design</button>
       <button type="button" class="chip" data-filter="3d">3D &amp; motion</button>
     </div>
-    <div class="count" id="countLabel"></div>
+    <div class="count" id="countLabel">1M+ impressions across our works</div>
   </div>
 </div>
 
@@ -189,15 +232,6 @@
 </div>
 
 <div class="wrap">
-  <div class="cta">
-    <h2>Want a mascot like these?</h2>
-    <p>Answer a few quick questions about your product and we'll explore character directions built for it, the same process behind everything above.</p>
-    <div class="cta-actions">
-      <a class="btn" href="https://cal.com/studiyo/chat?overlayCalendar=true" target="_blank" rel="noopener">Build your mascot →</a>
-      <a class="btn ghost" href="mailto:heystudiyo@gmail.com">Email heystudiyo@gmail.com</a>
-    </div>
-  </div>
-
   <footer>
     <div>Studiyo · character systems</div>
     <div>Cape Town · Worldwide</div>
@@ -205,63 +239,91 @@
 </div>
 
 <script>
-const MASCOT_CAPTIONS = [
-  "Character loop","Brand mascot design","Idle animation","Character rig study",
-  "Walk cycle","Expression sheet in motion","Mascot brand loop","YoYoYo — character loop",
-  "Character turntable","Mascot animation","Personality loop","TripBFF — mascot launch","TripBFF — mascot launch",
-  "Pear — motion loop","Globe mascot — animation loop"
+/* Client logos for the moving strip. Add a new client by adding a line here. */
+const CLIENT_LOGOS = [
+  {src:'assets/logos/tripbff.png', name:'TripBFF'},
+  {src:'assets/logos/tradezella.png', name:'Tradezella'},
+  {src:'assets/logos/indian-motorcycle.png', name:'Indian Motorcycle'},
+  {src:'assets/logos/pure-poker.png', name:'Pure Poker'},
+  {src:'assets/logos/alertsify.png', name:'Alertsify'},
+  {src:'assets/logos/menufit.png', name:'Menufit'},
+  {src:'assets/logos/liggo.png', name:'Liggo'},
+  {src:'assets/logos/v21-studios.png', name:'V21 Studios'},
 ];
-const THREED_CAPTIONS = [
-  "3D motion study","Cuneiform — 3D render","Product render","Material &amp; lighting study",
-  "3D scene render","Studio render loop","Object render","Environment render",
-  "3D animation loop","Turntable render","3D render loop",
-  "3D render sequence","Audemars Piguet — 3D render","3D motion render"
-];
-const THREED_IMG_CAPTIONS = [
-  "3D render — still","Studio lighting render","3D scene — still","Product render — still"
+const logoTrack = document.getElementById('logoTrack');
+// render the list twice back-to-back for a seamless infinite scroll
+[...CLIENT_LOGOS, ...CLIENT_LOGOS].forEach(logo=>{
+  const img = document.createElement('img');
+  img.src = logo.src; img.alt = logo.name; img.loading = 'lazy';
+  logoTrack.appendChild(img);
+});
+
+/* =====================================================================
+   WORKS — single source of truth for every piece on the page.
+   To add a new upload: copy a line, point src/poster at the new file,
+   set ratio to (width / height) of that file, write a caption, and
+   set featured:true if it should always sit at the top of the grid.
+   Everything else (counts, filters, layout) updates automatically.
+   ===================================================================== */
+const WORKS = [
+  // ---------------- Mascot & character work ----------------
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-01.mp4', poster:'assets/mascots/mascot-01-poster.jpg', ratio:1.000, caption:'Character loop', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-02.mp4', poster:'assets/mascots/mascot-02-poster.jpg', ratio:1.333, caption:'Brand mascot design', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-03.mp4', poster:'assets/mascots/mascot-03-poster.jpg', ratio:1.333, caption:'Idle animation', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-04.mp4', poster:'assets/mascots/mascot-04-poster.jpg', ratio:1.333, caption:'Character rig study', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-05.mp4', poster:'assets/mascots/mascot-05-poster.jpg', ratio:1.333, caption:'Walk cycle', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-06.mp4', poster:'assets/mascots/mascot-06-poster.jpg', ratio:1.773, caption:'Expression sheet in motion', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-07.mp4', poster:'assets/mascots/mascot-07-poster.jpg', ratio:1.333, caption:'Mascot brand loop', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-08.mp4', poster:'assets/mascots/mascot-08-poster.jpg', ratio:1.000, caption:'YoYoYo — character loop', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-09.mp4', poster:'assets/mascots/mascot-09-poster.jpg', ratio:1.000, caption:'Character turntable', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-10.mp4', poster:'assets/mascots/mascot-10-poster.jpg', ratio:1.333, caption:'Mascot animation', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-11.mp4', poster:'assets/mascots/mascot-11-poster.jpg', ratio:1.333, caption:'Personality loop', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-12.mp4', poster:'assets/mascots/mascot-12-poster.jpg', ratio:1.773, caption:'TripBFF — mascot launch', featured:true},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-13.mp4', poster:'assets/mascots/mascot-13-poster.jpg', ratio:1.773, caption:'TripBFF — mascot launch', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-15.mp4', poster:'assets/mascots/mascot-15-poster.jpg', ratio:1.773, caption:'Globe mascot — animation loop', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-16.mp4', poster:'assets/mascots/mascot-16-poster.jpg', ratio:0.945, caption:'Pear — motion loop', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-17.mp4', poster:'assets/mascots/mascot-17-poster.jpg', ratio:1.333, caption:'Logo animation', featured:false},
+  {type:'video', cat:'mascot', src:'assets/mascots/mascot-18.mp4', poster:'assets/mascots/mascot-18-poster.jpg', ratio:1.406, caption:'Koto — mascot loop', featured:false},
+  {type:'image', cat:'mascot', src:'assets/mascots/mascot-img-01.jpg', ratio:1.778, caption:'Globe mascot — character states', featured:true},
+
+  // ---------------- 3D & motion work ----------------
+  {type:'video', cat:'3d', src:'assets/3d/3d-01.mp4', poster:'assets/3d/3d-01-poster.jpg', ratio:0.563, caption:'3D motion study', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-02.mp4', poster:'assets/3d/3d-02-poster.jpg', ratio:1.778, caption:'Cuneiform — 3D render', featured:true},
+  {type:'video', cat:'3d', src:'assets/3d/3d-03.mp4', poster:'assets/3d/3d-03-poster.jpg', ratio:1.690, caption:'Product render', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-04.mp4', poster:'assets/3d/3d-04-poster.jpg', ratio:1.778, caption:'3D scene render', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-05.mp4', poster:'assets/3d/3d-05-poster.jpg', ratio:1.000, caption:'Studio render loop', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-06.mp4', poster:'assets/3d/3d-06-poster.jpg', ratio:1.690, caption:'Object render', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-07.mp4', poster:'assets/3d/3d-07-poster.jpg', ratio:1.778, caption:'Environment render', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-08.mp4', poster:'assets/3d/3d-08-poster.jpg', ratio:1.028, caption:'3D animation loop', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-09.mp4', poster:'assets/3d/3d-09-poster.jpg', ratio:1.778, caption:'Turntable render', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-10.mp4', poster:'assets/3d/3d-10-poster.jpg', ratio:1.778, caption:'3D render loop', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-11.mp4', poster:'assets/3d/3d-11-poster.jpg', ratio:1.778, caption:'3D render sequence', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-12.mp4', poster:'assets/3d/3d-12-poster.jpg', ratio:0.563, caption:'Audemars Piguet — 3D render', featured:true},
+  {type:'video', cat:'3d', src:'assets/3d/3d-13.mp4', poster:'assets/3d/3d-13-poster.jpg', ratio:1.778, caption:'3D motion render', featured:false},
+  {type:'video', cat:'3d', src:'assets/3d/3d-14.mp4', poster:'assets/3d/3d-14-poster.jpg', ratio:1.778, caption:'Sequence render', featured:false},
+  {type:'image', cat:'3d', src:'assets/3d/3d-img-01.jpg', ratio:1.778, caption:'3D render — still', featured:false},
+  {type:'image', cat:'3d', src:'assets/3d/3d-img-02.jpg', ratio:1.780, caption:'Studio lighting render', featured:false},
+  {type:'image', cat:'3d', src:'assets/3d/3d-img-03.jpg', ratio:1.778, caption:'3D scene — still', featured:false},
+  {type:'image', cat:'3d', src:'assets/3d/3d-img-04.jpg', ratio:2.073, caption:'Product render — still', featured:false},
 ];
 
-const items = [];
-for(let i=1;i<=15;i++){
-  const n = String(i).padStart(2,'0');
-  items.push({
-    type:'video', cat:'mascot',
-    src:`assets/mascots/mascot-${n}.mp4`,
-    poster:`assets/mascots/mascot-${n}-poster.jpg`,
-    caption: MASCOT_CAPTIONS[i-1] || 'Mascot animation'
-  });
-}
-items.push({
-  type:'image', cat:'mascot',
-  src:'assets/mascots/mascot-img-01.jpg',
-  caption: 'Globe mascot — character states'
-});
-for(let i=1;i<=14;i++){
-  const n = String(i).padStart(2,'0');
-  items.push({
-    type:'video', cat:'3d',
-    src:`assets/3d/3d-${n}.mp4`,
-    poster:`assets/3d/3d-${n}-poster.jpg`,
-    caption: THREED_CAPTIONS[i-1] || '3D render'
-  });
-}
-for(let i=1;i<=4;i++){
-  const n = String(i).padStart(2,'0');
-  items.push({
-    type:'image', cat:'3d',
-    src:`assets/3d/3d-img-${n}.jpg`,
-    caption: THREED_IMG_CAPTIONS[i-1] || '3D render — still'
-  });
-}
+/* Featured pieces float to the top of the grid (in the order listed
+   above); everything else follows in listed order. This is the only
+   thing that controls "best work on top" — flip featured:true/false
+   above to change what leads. */
+const items = [
+  ...WORKS.filter(w=>w.featured),
+  ...WORKS.filter(w=>!w.featured)
+];
 
 const grid = document.getElementById('grid');
 const tagLabel = {mascot:'Mascot design', '3d':'3D & motion'};
 
-items.forEach((it,idx)=>{
+items.forEach((it)=>{
   const card = document.createElement('div');
   card.className = 'card';
   card.dataset.cat = it.cat;
-  card.style.animationDelay = (Math.min(idx,10)*0.03)+'s';
+  card.dataset.ratio = it.ratio;
 
   const media = document.createElement('div');
   media.className = 'media';
@@ -282,6 +344,13 @@ items.forEach((it,idx)=>{
   pill.textContent = tagLabel[it.cat];
   media.appendChild(pill);
 
+  if(it.featured){
+    const star = document.createElement('div');
+    star.className = 'star-pill';
+    star.textContent = 'Featured';
+    media.appendChild(star);
+  }
+
   const cap = document.createElement('div');
   cap.className = 'cap';
   cap.innerHTML = `<span class="t">${it.caption}</span>`;
@@ -291,13 +360,54 @@ items.forEach((it,idx)=>{
   grid.appendChild(card);
 });
 
-document.getElementById('stat3d').textContent = items.filter(i=>i.cat==='3d').length;
 
-function updateCount(filter){
-  const n = filter==='all' ? items.length : items.filter(i=>i.cat===filter).length;
-  document.getElementById('countLabel').textContent = n + (n===1 ? ' piece' : ' pieces');
+
+/* ---------- real masonry packing (JS), any item count, any mix ---------- */
+const CAP_HEIGHT = 34;
+const GAP = 18;
+
+function columnCount(){
+  if(window.innerWidth <= 600) return 1;
+  if(window.innerWidth <= 980) return 2;
+  return 3;
 }
-updateCount('all');
+
+function layout(){
+  const cols = columnCount();
+  const containerWidth = grid.clientWidth;
+  const colWidth = (containerWidth - GAP*(cols-1)) / cols;
+  const colHeights = new Array(cols).fill(0);
+
+  Array.from(grid.children).forEach(card=>{
+    if(card.classList.contains('hide')) return;
+    const ratio = parseFloat(card.dataset.ratio) || 1.5;
+    const mediaH = colWidth / ratio;
+    const cardH = mediaH + CAP_HEIGHT;
+
+    let col = 0;
+    for(let i=1;i<cols;i++){ if(colHeights[i] < colHeights[col]) col = i; }
+    const x = col * (colWidth + GAP);
+    const y = colHeights[col];
+
+    card.style.width = colWidth + 'px';
+    card.querySelector('.media').style.height = mediaH + 'px';
+    card.style.left = x + 'px';
+    card.style.top = y + 'px';
+    card.classList.add('in');
+
+    colHeights[col] = y + cardH + GAP;
+  });
+
+  grid.style.height = Math.max(0, ...colHeights) - GAP + 'px';
+}
+
+layout();
+window.addEventListener('load', layout);
+let resizeTimer;
+window.addEventListener('resize', ()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(layout, 120);
+});
 
 // filter chips
 document.querySelectorAll('#filterChips .chip').forEach(chip=>{
@@ -312,7 +422,7 @@ document.querySelectorAll('#filterChips .chip').forEach(chip=>{
       if(show) visibleCount++;
     });
     document.getElementById('emptyState').style.display = visibleCount===0 ? 'block' : 'none';
-    updateCount(f);
+    layout();
     window.scrollTo({top:document.getElementById('work').offsetTop-10, behavior:'smooth'});
   });
 });

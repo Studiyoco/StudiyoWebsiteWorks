@@ -262,7 +262,7 @@ const logoTrack = document.getElementById('logoTrack');
    WORKS — single source of truth for every piece on the page.
    To add a new upload: copy a line, point src/poster at the new file,
    set ratio to (width / height) of that file, write a caption, and
-   set featured:true if it should always sit at the top of the grid.
+   set featured:false if it should always sit at the top of the grid.
    Everything else (counts, filters, layout) updates automatically.
    ===================================================================== */
 const WORKS = [
@@ -271,7 +271,7 @@ const WORKS = [
   {type:'video', cat:'mascot', src:'assets/works/mascot/4zndcgu1o46vuzrp.mp4', poster:'assets/works/mascot/4zndcgu1o46vuzrp.jpg', ratio:1.333, caption:"4zndcgu1o46vuzrp", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/5aag2fj4qqunjvmb.mp4', poster:'assets/works/mascot/5aag2fj4qqunjvmb.jpg', ratio:1.333, caption:"5aag2fj4qqunjvmb", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/5jowsdehpjgv-7pb.mp4', poster:'assets/works/mascot/5jowsdehpjgv-7pb.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/cal-ai-website.mp4', poster:'assets/works/mascot/cal-ai-website.jpg', ratio:1.333, caption:"Cal AI \u2014 website mascot", featured:true},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/cal-ai-website.mp4', poster:'assets/works/mascot/cal-ai-website.jpg', ratio:1.333, caption:"Cal AI \u2014 website mascot", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/chicken-mascot.mp4', poster:'assets/works/mascot/chicken-mascot.jpg', ratio:1.0, caption:"Chicken mascot", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/codex-animation.mp4', poster:'assets/works/mascot/codex-animation.jpg', ratio:1.406, caption:"Codex \u2014 animation", featured:false},
   {type:'image', cat:'mascot', src:'assets/works/mascot/g5l373exeaawdnt.jpg', ratio:1.778, caption:"Globe mascot \u2014 character states", featured:false},
@@ -286,23 +286,22 @@ const WORKS = [
   {type:'video', cat:'mascot', src:'assets/works/mascot/mascot.mp4', poster:'assets/works/mascot/mascot.jpg', ratio:1.778, caption:"Mascot loop", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/mogging-cat.mp4', poster:'assets/works/mascot/mogging-cat.jpg', ratio:1.125, caption:"Mogging cat", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/parrot-site.mp4', poster:'assets/works/mascot/parrot-site.jpg', ratio:1.435, caption:"Parrot \u2014 site loop", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/pear-motion-2.mp4', poster:'assets/works/mascot/pear-motion-2.jpg', ratio:0.945, caption:"Pear \u2014 motion loop", featured:true},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/pear-motion.mp4', poster:'assets/works/mascot/pear-motion.jpg', ratio:0.945, caption:"Pear \u2014 motion loop", featured:true},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/pear-motion.mp4', poster:'assets/works/mascot/pear-motion.jpg', ratio:0.945, caption:"Pear \u2014 motion loop", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/q8j7ueoytcqi13bu.mp4', poster:'assets/works/mascot/q8j7ueoytcqi13bu.jpg', ratio:1.778, caption:"Q8j7ueoytcqi13bu", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/s4h4gfw0adxjoh76.mp4', poster:'assets/works/mascot/s4h4gfw0adxjoh76.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/siri-mascot-animation.mp4', poster:'assets/works/mascot/siri-mascot-animation.jpg', ratio:1.0, caption:"Siri mascot", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/tcjfu53vjvq8tunc.mp4', poster:'assets/works/mascot/tcjfu53vjvq8tunc.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-1.mp4', poster:'assets/works/mascot/tripbff-1.jpg', ratio:1.778, caption:"TripBFF \u2014 mascot launch", featured:true},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-2.mp4', poster:'assets/works/mascot/tripbff-2.jpg', ratio:1.778, caption:"TripBFF \u2014 mascot launch", featured:true},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/yoyoyo.mp4', poster:'assets/works/mascot/yoyoyo.jpg', ratio:1.0, caption:"YoYoYo \u2014 character loop", featured:true},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-1.mp4', poster:'assets/works/mascot/tripbff-1.jpg', ratio:1.778, caption:"TripBFF \u2014 mascot launch", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-2.mp4', poster:'assets/works/mascot/tripbff-2.jpg', ratio:1.778, caption:"TripBFF \u2014 mascot launch", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/yoyoyo.mp4', poster:'assets/works/mascot/yoyoyo.jpg', ratio:1.0, caption:"YoYoYo \u2014 character loop", featured:false},
 
   // ---------------- 3D & motion work ----------------
   {type:'video', cat:'3d', src:'assets/works/3d/0001-0060.mp4', poster:'assets/works/3d/0001-0060.jpg', ratio:0.562, caption:"0001 0060", featured:false},
   {type:'video', cat:'3d', src:'assets/works/3d/0001-0330.mp4', poster:'assets/works/3d/0001-0330.jpg', ratio:1.778, caption:"0001 0330", featured:false},
   {type:'image', cat:'3d', src:'assets/works/3d/3d-render-get-better-melts.png', ratio:0.844, caption:"Get Better Melts \u2014 render", featured:false},
   {type:'image', cat:'3d', src:'assets/works/3d/ap-200001.png', ratio:1.778, caption:"Audemars Piguet \u2014 still", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/audemars-piguet.mp4', poster:'assets/works/3d/audemars-piguet.jpg', ratio:0.562, caption:"Audemars Piguet \u2014 3D render", featured:true},
-  {type:'video', cat:'3d', src:'assets/works/3d/cuneiform-hd.mp4', poster:'assets/works/3d/cuneiform-hd.jpg', ratio:1.778, caption:"Cuneiform \u2014 3D render", featured:true},
+  {type:'video', cat:'3d', src:'assets/works/3d/audemars-piguet.mp4', poster:'assets/works/3d/audemars-piguet.jpg', ratio:0.562, caption:"Audemars Piguet \u2014 3D render", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/cuneiform-hd.mp4', poster:'assets/works/3d/cuneiform-hd.jpg', ratio:1.778, caption:"Cuneiform \u2014 3D render", featured:false},
   {type:'video', cat:'3d', src:'assets/works/3d/dream-melts-hero-3d.mp4', poster:'assets/works/3d/dream-melts-hero-3d.jpg', ratio:1.778, caption:"Dream Melts \u2014 hero 3D", featured:false},
   {type:'video', cat:'3d', src:'assets/works/3d/dwl04mefwwzvrhym.mp4', poster:'assets/works/3d/dwl04mefwwzvrhym.jpg', ratio:1.778, caption:"3D render", featured:false},
   {type:'video', cat:'3d', src:'assets/works/3d/explainer-3d.mp4', poster:'assets/works/3d/explainer-3d.jpg', ratio:1.778, caption:"Explainer \u2014 3D", featured:false},
@@ -331,7 +330,7 @@ const WORKS = [
 
 /* Featured pieces float to the top of the grid (in the order listed
    above); everything else follows in listed order. This is the only
-   thing that controls "best work on top" — flip featured:true/false
+   thing that controls "best work on top" — flip featured:false/false
    above to change what leads. */
 const items = [
   ...WORKS.filter(w=>w.featured),

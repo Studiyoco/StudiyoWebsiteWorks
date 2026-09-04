@@ -16,8 +16,8 @@
     --ink:#161514;
     --ink-dim:rgba(22,21,20,.62);
     --ink-faint:rgba(22,21,20,.40);
-    --accent:#FF6633;
-    --accent-dim:rgba(255,102,51,.08);
+    --accent:#161514;
+    --accent-dim:rgba(22,21,20,.06);
     --radius:14px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -40,7 +40,7 @@
   header .logo{display:flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none}
   header .logo svg{width:34px;height:34px;display:block}
   header .logo b{font-weight:600;font-size:16.5px;letter-spacing:-.02em}
-  header .logo b span{color:var(--accent)}
+  header .logo b span{color:var(--ink)}
   header nav{display:flex;align-items:center;gap:22px}
   header nav a.navlink{color:var(--ink-dim);text-decoration:none;font-size:13.5px;transition:color .15s}
   header nav a.navlink:hover{color:var(--ink)}
@@ -48,15 +48,15 @@
     color:#fff;background:var(--ink);padding:9px 17px;border-radius:100px;
     font-size:13px;font-weight:500;text-decoration:none;transition:all .15s;
   }
-  header nav a.hire:hover{background:var(--accent)}
+  header nav a.hire:hover{background:#2a2928}
 
   .hero{padding:76px 0 44px}
   .hero .kicker{
-    font-size:13px;color:var(--accent);font-weight:500;
+    font-size:13px;color:var(--ink-dim);font-weight:500;
     text-transform:uppercase;letter-spacing:.14em;margin-bottom:22px;
     display:flex;align-items:center;gap:10px;
   }
-  .hero .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hero .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--ink);display:inline-block}
   h1{
     font-size:clamp(38px,6.4vw,58px);font-weight:600;letter-spacing:-.025em;
     line-height:1.05;margin-bottom:22px;max-width:16ch;
@@ -76,10 +76,10 @@
     text-decoration:none;letter-spacing:-.005em;transition:all .15s;
   }
   .btn-primary{background:var(--ink);color:#fff;border:1px solid var(--ink)}
-  .btn-primary:hover{background:var(--accent);border-color:var(--accent)}
+  .btn-primary:hover{background:#2a2928;border-color:#2a2928}
   .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
   .btn-secondary:hover{border-color:rgba(17,17,17,.35)}
-  .btn-secondary svg{color:var(--accent)}
+  .btn-secondary svg{color:var(--ink-dim)}
 
   /* ---------- client logo marquee ---------- */
   .logo-marquee{
@@ -267,64 +267,40 @@ const logoTrack = document.getElementById('logoTrack');
    ===================================================================== */
 const WORKS = [
   // ---------------- Mascot & character work ----------------
-  {type:'video', cat:'mascot', src:'assets/works/mascot/4zndcgu1o46vuzrp.mp4', poster:'assets/works/mascot/4zndcgu1o46vuzrp.jpg', ratio:1.333, caption:"4zndcgu1o46vuzrp", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/5aag2fj4qqunjvmb.mp4', poster:'assets/works/mascot/5aag2fj4qqunjvmb.jpg', ratio:1.333, caption:"5aag2fj4qqunjvmb", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/5jowsdehpjgv-7pb.mp4', poster:'assets/works/mascot/5jowsdehpjgv-7pb.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/cal-ai-website.mp4', poster:'assets/works/mascot/cal-ai-website.jpg', ratio:1.333, caption:"Cal AI \u2014 website mascot", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/cal-ai-website.mp4', poster:'assets/works/mascot/cal-ai-website.jpg', ratio:1.333, caption:"Cal AI \u2014 website", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/chicken-mascot.mp4', poster:'assets/works/mascot/chicken-mascot.jpg', ratio:1.0, caption:"Chicken mascot", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/codex-animation.mp4', poster:'assets/works/mascot/codex-animation.jpg', ratio:1.406, caption:"Codex \u2014 animation", featured:false},
-  {type:'image', cat:'mascot', src:'assets/works/mascot/g5l373exeaawdnt.jpg', ratio:1.778, caption:"Globe mascot \u2014 character states", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/g6dvhuo1fzwlobrj.mp4', poster:'assets/works/mascot/g6dvhuo1fzwlobrj.jpg', ratio:1.0, caption:"G6dvhuo1fzwlobrj", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/grok-animations-2.mp4', poster:'assets/works/mascot/grok-animations-2.jpg', ratio:1.778, caption:"Grok \u2014 animation study", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/grok-bot-animation.mp4', poster:'assets/works/mascot/grok-bot-animation.jpg', ratio:1.333, caption:"Grok Bot \u2014 character animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/juno-reference-style.mp4', poster:'assets/works/mascot/juno-reference-style.jpg', ratio:1.0, caption:"Juno \u2014 reference style", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/knd8pnxvnkkvlreu.mp4', poster:'assets/works/mascot/knd8pnxvnkkvlreu.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/ldrm0qphuurklpkq.mp4', poster:'assets/works/mascot/ldrm0qphuurklpkq.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/mascot-animations.mp4', poster:'assets/works/mascot/mascot-animations.jpg', ratio:1.0, caption:"Mascot animations", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/mascot-screen-animation.mp4', poster:'assets/works/mascot/mascot-screen-animation.jpg', ratio:1.333, caption:"Mascot \u2014 screen animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/mascot.mp4', poster:'assets/works/mascot/mascot.jpg', ratio:1.778, caption:"Mascot loop", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/codex-animation.mp4', poster:'assets/works/mascot/codex-animation.jpg', ratio:1.406, caption:"Codex", featured:false},
+  {type:'image', cat:'mascot', src:'assets/works/mascot/g5l373exeaawdnt.jpg', ratio:1.778, caption:"Globe \u2014 character states", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/grok-animations-2.mp4', poster:'assets/works/mascot/grok-animations-2.jpg', ratio:1.778, caption:"Grok", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/grok-bot-animation.mp4', poster:'assets/works/mascot/grok-bot-animation.jpg', ratio:1.333, caption:"Grok Bot", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/juno-reference-style.mp4', poster:'assets/works/mascot/juno-reference-style.jpg', ratio:1.0, caption:"Juno", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/mogging-cat.mp4', poster:'assets/works/mascot/mogging-cat.jpg', ratio:1.125, caption:"Mogging cat", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/parrot-site.mp4', poster:'assets/works/mascot/parrot-site.jpg', ratio:1.435, caption:"Parrot \u2014 site loop", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/pear-motion.mp4', poster:'assets/works/mascot/pear-motion.jpg', ratio:0.945, caption:"Pear \u2014 motion loop", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/q8j7ueoytcqi13bu.mp4', poster:'assets/works/mascot/q8j7ueoytcqi13bu.jpg', ratio:1.778, caption:"Q8j7ueoytcqi13bu", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/s4h4gfw0adxjoh76.mp4', poster:'assets/works/mascot/s4h4gfw0adxjoh76.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/parrot-site.mp4', poster:'assets/works/mascot/parrot-site.jpg', ratio:1.435, caption:"Parrot", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/pear-motion.mp4', poster:'assets/works/mascot/pear-motion.jpg', ratio:0.945, caption:"Pear", featured:false},
   {type:'video', cat:'mascot', src:'assets/works/mascot/siri-mascot-animation.mp4', poster:'assets/works/mascot/siri-mascot-animation.jpg', ratio:1.0, caption:"Siri mascot", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/tcjfu53vjvq8tunc.mp4', poster:'assets/works/mascot/tcjfu53vjvq8tunc.jpg', ratio:1.333, caption:"Mascot animation", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-1.mp4', poster:'assets/works/mascot/tripbff-1.jpg', ratio:1.778, caption:"TripBFF \u2014 mascot launch", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-2.mp4', poster:'assets/works/mascot/tripbff-2.jpg', ratio:1.778, caption:"TripBFF \u2014 mascot launch", featured:false},
-  {type:'video', cat:'mascot', src:'assets/works/mascot/yoyoyo.mp4', poster:'assets/works/mascot/yoyoyo.jpg', ratio:1.0, caption:"YoYoYo \u2014 character loop", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-1.mp4', poster:'assets/works/mascot/tripbff-1.jpg', ratio:1.778, caption:"TripBFF", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/tripbff-2.mp4', poster:'assets/works/mascot/tripbff-2.jpg', ratio:1.778, caption:"TripBFF", featured:false},
+  {type:'video', cat:'mascot', src:'assets/works/mascot/yoyoyo.mp4', poster:'assets/works/mascot/yoyoyo.jpg', ratio:1.0, caption:"YoYoYo", featured:false},
 
   // ---------------- 3D & motion work ----------------
-  {type:'video', cat:'3d', src:'assets/works/3d/0001-0060.mp4', poster:'assets/works/3d/0001-0060.jpg', ratio:0.562, caption:"0001 0060", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/0001-0330.mp4', poster:'assets/works/3d/0001-0330.jpg', ratio:1.778, caption:"0001 0330", featured:false},
-  {type:'image', cat:'3d', src:'assets/works/3d/3d-render-get-better-melts.png', ratio:0.844, caption:"Get Better Melts \u2014 render", featured:false},
-  {type:'image', cat:'3d', src:'assets/works/3d/ap-200001.png', ratio:1.778, caption:"Audemars Piguet \u2014 still", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/audemars-piguet.mp4', poster:'assets/works/3d/audemars-piguet.jpg', ratio:0.562, caption:"Audemars Piguet \u2014 3D render", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/cuneiform-hd.mp4', poster:'assets/works/3d/cuneiform-hd.jpg', ratio:1.778, caption:"Cuneiform \u2014 3D render", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/dream-melts-hero-3d.mp4', poster:'assets/works/3d/dream-melts-hero-3d.jpg', ratio:1.778, caption:"Dream Melts \u2014 hero 3D", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/dwl04mefwwzvrhym.mp4', poster:'assets/works/3d/dwl04mefwwzvrhym.jpg', ratio:1.778, caption:"3D render", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/explainer-3d.mp4', poster:'assets/works/3d/explainer-3d.jpg', ratio:1.778, caption:"Explainer \u2014 3D", featured:false},
-  {type:'image', cat:'3d', src:'assets/works/3d/get-better-melts-3d.png', ratio:0.844, caption:"Get Better Melts \u2014 3D still", featured:false},
-  {type:'image', cat:'3d', src:'assets/works/3d/photo-2025-06-21-13-40-48.jpg', ratio:1.78, caption:"3D render", featured:false},
-  {type:'image', cat:'3d', src:'assets/works/3d/photo-2025-11-06-02-24-50.jpg', ratio:1.778, caption:"3D render", featured:false},
-  {type:'image', cat:'3d', src:'assets/works/3d/photo-2025-11-27-04-51-04.jpg', ratio:2.071, caption:"3D render", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/product-breakdown-3d.mp4', poster:'assets/works/3d/product-breakdown-3d.jpg', ratio:0.844, caption:"Product breakdown \u2014 3D", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/rnhrcmmbyiowgxm9.mp4', poster:'assets/works/3d/rnhrcmmbyiowgxm9.jpg', ratio:1.689, caption:"3D render", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/sequence-01.mp4', poster:'assets/works/3d/sequence-01.jpg', ratio:1.778, caption:"3D sequence", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/solana-3d.mp4', poster:'assets/works/3d/solana-3d.jpg', ratio:1.778, caption:"Solana \u2014 3D", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/stimuleye-3d-animation-filling-capsules.mp4', poster:'assets/works/3d/stimuleye-3d-animation-filling-capsules.jpg', ratio:1.0, caption:"Stimuleye \u2014 capsule fill", featured:false},
-  {type:'image', cat:'3d', src:'assets/works/3d/stimuleye-3d-render.png', ratio:1.0, caption:"Stimuleye \u2014 3D still", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/stimuleye.mp4', poster:'assets/works/3d/stimuleye.jpg', ratio:1.0, caption:"Stimuleye \u2014 product motion", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-06-23-19-43-57.mp4', poster:'assets/works/3d/video-2025-06-23-19-43-57.jpg', ratio:1.778, caption:"Video 2025 06 23 19 43 57", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-08-04-00-07-03.mp4', poster:'assets/works/3d/video-2025-08-04-00-07-03.jpg', ratio:1.0, caption:"Video 2025 08 04 00 07 03", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-08-20-21-59-45.mp4', poster:'assets/works/3d/video-2025-08-20-21-59-45.jpg', ratio:1.689, caption:"Video 2025 08 20 21 59 45", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-09-20-17-39-58.mp4', poster:'assets/works/3d/video-2025-09-20-17-39-58.jpg', ratio:1.778, caption:"Video 2025 09 20 17 39 58", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-10-13-23-11-30.mp4', poster:'assets/works/3d/video-2025-10-13-23-11-30.jpg', ratio:1.028, caption:"Video 2025 10 13 23 11 30", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-10-23-02-16-24.mp4', poster:'assets/works/3d/video-2025-10-23-02-16-24.jpg', ratio:1.778, caption:"Video 2025 10 23 02 16 24", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/wallet-opening-3d.mp4', poster:'assets/works/3d/wallet-opening-3d.jpg', ratio:1.778, caption:"Wallet unbox \u2014 3D", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/3d/zeqfk-cafk9tvmnk.mp4', poster:'assets/works/3d/zeqfk-cafk9tvmnk.jpg', ratio:1.778, caption:"3D render", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/misc/logo-update.mp4', poster:'assets/works/misc/logo-update.jpg', ratio:1.333, caption:"Logo animation", featured:false},
-  {type:'video', cat:'3d', src:'assets/works/misc/skpdpxdkpkjcj-za.mp4', poster:'assets/works/misc/skpdpxdkpkjcj-za.jpg', ratio:1.778, caption:"3D render", featured:false},
+  {type:'image', cat:'3d', src:'assets/works/3d/3d-render-get-better-melts.png', ratio:0.844, caption:"Get Better Melts", featured:false},
+  {type:'image', cat:'3d', src:'assets/works/3d/ap-200001.png', ratio:1.778, caption:"Audemars Piguet", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/audemars-piguet.mp4', poster:'assets/works/3d/audemars-piguet.jpg', ratio:0.562, caption:"Audemars Piguet", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/cuneiform-hd.mp4', poster:'assets/works/3d/cuneiform-hd.jpg', ratio:1.778, caption:"Cuneiform", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/dream-melts-hero-3d.mp4', poster:'assets/works/3d/dream-melts-hero-3d.jpg', ratio:1.778, caption:"Dream Melts", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/explainer-3d.mp4', poster:'assets/works/3d/explainer-3d.jpg', ratio:1.778, caption:"Explainer", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/product-breakdown-3d.mp4', poster:'assets/works/3d/product-breakdown-3d.jpg', ratio:0.844, caption:"Product breakdown", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/sequence-01.mp4', poster:'assets/works/3d/sequence-01.jpg', ratio:1.778, caption:"Sequence", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/solana-3d.mp4', poster:'assets/works/3d/solana-3d.jpg', ratio:1.778, caption:"Solana", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/stimuleye-3d-animation-filling-capsules.mp4', poster:'assets/works/3d/stimuleye-3d-animation-filling-capsules.jpg', ratio:1.0, caption:"Stimuleye \u2014 capsules", featured:false},
+  {type:'image', cat:'3d', src:'assets/works/3d/stimuleye-3d-render.png', ratio:1.0, caption:"Stimuleye", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/stimuleye.mp4', poster:'assets/works/3d/stimuleye.jpg', ratio:1.0, caption:"Stimuleye", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-06-23-19-43-57.mp4', poster:'assets/works/3d/video-2025-06-23-19-43-57.jpg', ratio:1.778, caption:"Product turntable", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-08-20-21-59-45.mp4', poster:'assets/works/3d/video-2025-08-20-21-59-45.jpg', ratio:1.689, caption:"Studio render", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-09-20-17-39-58.mp4', poster:'assets/works/3d/video-2025-09-20-17-39-58.jpg', ratio:1.778, caption:"Chip \u2014 3D", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/video-2025-10-23-02-16-24.mp4', poster:'assets/works/3d/video-2025-10-23-02-16-24.jpg', ratio:1.778, caption:"LIT \u2014 logo", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/3d/wallet-opening-3d.mp4', poster:'assets/works/3d/wallet-opening-3d.jpg', ratio:1.778, caption:"Wallet unbox", featured:false},
+  {type:'video', cat:'3d', src:'assets/works/misc/logo-update.mp4', poster:'assets/works/misc/logo-update.jpg', ratio:1.333, caption:"Logo", featured:false},
 ];
 
 /* Featured pieces float to the top of the grid (in the order listed
